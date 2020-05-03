@@ -76,14 +76,14 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Hack Nerd Font:style=Bold:pixelsize=12:antialias=false;0
-font-1 = Hack Nerd Font Mono:style=Regular:pixelsize=12:antialias=false;0  
-font-2 = SauceCodePro NF:style=Bold:pixelsize=12:antialias=false;0
-font-3 = MesloLGSDZ NF:style=Bold:pixelsize=12:antialias=false;0
-font-4 = Font Awesome 5 Brands:style=Regular:pixelsize=12:antialias=false;0
-font-5 = Font Awesome 5 Free:style=Solid:pixelsize=12;antilias=false;0
-font-6 = Hack Nerd Font Mono:style=Bold:pixelsize=12:antialias=false;0  
-font-7 = DejaVuSansMono Nerd Font Mono:style=Bold Oblique:pixelsize=12:antialias=false;0
+font-0 = Hack Nerd Font:style=Bold:pixelsize=12;0
+font-1 = Hack Nerd Font Mono:style=Regular:pixelsize=15;0  
+font-2 = SauceCodePro NF:style=Bold:pixelsize=12;0
+font-3 = MesloLGSDZ NF:style=Bold:pixelsize=12;0
+font-4 = Font Awesome 5 Brands:style=Regular:pixelsize=12;0
+font-5 = Font Awesome 5 Free:style=Solid:pixelsize=12;0
+font-6 = Hack Nerd Font Mono:style=Bold:pixelsize=12;0  
+font-7 = DejaVuSansMono Nerd Font Mono:style=Bold Oblique:pixelsize=12;0
 
 modules-left = rofi i3 xwindow menu
 modules-center = time 
@@ -103,7 +103,8 @@ click-right = slock
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:15:...%
+label = %title:0:30:...%
+label-foreground = #c4ff0e
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -172,7 +173,7 @@ interval = 3.0
 ;   <bar-load>
 ;   <ramp-load>
 ;   <ramp-coreload>
-format = <label> <ramp-load>
+format = <label><ramp-load>
 format-underline = #0ed145
 
 ; Available tokens:
@@ -229,7 +230,7 @@ interval = 3.0
 ;   <bar-swap-free>
 ;   <ramp-swap-used>
 ;   <ramp-swap-free>
-format = <label> <ramp-used>
+format = <label><ramp-used>
 format-underline = #fff200
 
 ; Available tokens:
@@ -250,7 +251,7 @@ format-underline = #fff200
 ;   %gb_swap_free%
 ;   %gb_swap_used%
 
-label = M %percentage_used%%
+label = RAM %percentage_used%%
 ;label-font = 5 
 
 ; Only applies if <bar-used> is used
@@ -301,13 +302,13 @@ time = %l:%M %p
 time-alt = " %H:%M"
 
 
-format-prefix = " "
+;format-prefix = " "
 ;format-prefix-foreground = ${colors.secondary}
 ;format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-foreground = #ffffff
+;format-prefix-foreground = #ffaec8
 ;format-underline = #0a6cf5
 label = %time% 
-label-font =  4 
+label-font =  2 
 label-padding = 0 
 format-padding = 0 
 
@@ -367,61 +368,42 @@ animation-discharging-framerate = 750
 [module/menu]
 type = custom/menu
 
-label-open = 
-label-close = 
+label-open = _ 
+label-close = 窱 
 label-separator = /
 
-menu-0-0 = Action 1
-menu-0-0-foreground = #fff51f
-menu-0-0-exec = notify-send -u low "action 1"
-menu-0-1 = Sub-menu 1
-menu-0-1-foreground = #fff51f
-menu-0-1-exec = menu-open-1
-menu-0-2 = Sub-menu 2
-menu-0-2-foreground = #fff51f
-menu-0-2-exec = menu-open-2
 
-menu-1-0 = Cancel
-menu-1-0-foreground = #fff51f
-menu-1-0-exec = menu-open-0
-menu-1-1 = Perform action
-menu-1-1-foreground = #fff51f
-menu-1-1-exec = notify-send -u low "sub-menu action"
+menu-0-0 = Lock
+menu-0-0-foreground = #0ed145 
+menu-0-0-exec = menu-open-1 
+menu-0-1 = Shutdown
+menu-0-1-foreground = #8cfffb
+menu-0-1-exec = menu-open-2
+menu-0-2 = Reboot
+#menu-0-2-foreground = #b83dba
+menu-0-2-exec = menu-open-3
 
-menu-2-0 = Perform action
-menu-2-0-foreground = #fff51f
-menu-2-0-exec = notify-send -u low "sub-menu action 2"
-menu-2-1 = Cancel
-menu-2-1-foreground = #fff51f
-menu-2-1-exec = menu-open-0
+menu-1-0 =  + Lock
+menu-1-0-foreground = #0ed145 
+menu-1-0-exec = i3lock
+menu-1-1 = 窱 + Cancel
+#menu-1-1-foreground = #ec1c24 
+menu-1-1-exec = label-out
 
+menu-2-0 =  + Powroff
+menu-2-0-foreground = #8cfffb 
+menu-2-0-exec = shutdown -h & 
+menu-2-1 = 窱 + Cancel 
+#menu-2-1-foreground = #ec1c24
+menu-2-1-exec = label-out  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+menu-3-0 =  + Reboot
+menu-3-0-foreground = #b83dba
+#menu3-0-exec = notify-send -u low "sub-menu action 2"
+menu-3-0-exec = reboot
+menu-3-1 = 窱 + Cancel
+#menu-3-1-foreground = #ec1c24
+menu-3-1-exec = label-close
 
 
 [settings]
